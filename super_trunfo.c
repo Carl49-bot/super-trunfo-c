@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <string.h>
 
 #define TAM_CODIGO 4
 #define TAM_NOME 50
@@ -24,8 +25,10 @@ int main() {
     scanf(" %c", &estado1);
     printf("Código da Carta (ex: A01): ");
     scanf("%s", codigo1);
+    getchar(); // limpa o buffer
     printf("Nome da Cidade: ");
-    scanf(" %[^\n]", nomeCidade1);
+    fgets(nomeCidade1, TAM_NOME, stdin);
+    nomeCidade1[strcspn(nomeCidade1, "\n")] = 0; // remove o \n
     printf("População: ");
     scanf("%d", &populacao1);
     printf("Área (em km²): ");
@@ -41,8 +44,10 @@ int main() {
     scanf(" %c", &estado2);
     printf("Código da Carta (ex: B02): ");
     scanf("%s", codigo2);
+    getchar(); // limpa o buffer
     printf("Nome da Cidade: ");
-    scanf(" %[^\n]", nomeCidade2);
+    fgets(nomeCidade2, TAM_NOME, stdin);
+    nomeCidade2[strcspn(nomeCidade2, "\n")] = 0; // remove o \n
     printf("População: ");
     scanf("%d", &populacao2);
     printf("Área (em km²): ");
@@ -53,7 +58,8 @@ int main() {
     scanf("%d", &pontosTuristicos2);
 
     // Exibição - Carta 1
-    printf("\nCarta 1:\n");
+    printf("\n------------------------\n");
+    printf("Carta 1:\n");
     printf("Estado: %c\n", estado1);
     printf("Código: %s\n", codigo1);
     printf("Nome da Cidade: %s\n", nomeCidade1);
@@ -63,7 +69,8 @@ int main() {
     printf("Número de Pontos Turísticos: %d\n", pontosTuristicos1);
 
     // Exibição - Carta 2
-    printf("\nCarta 2:\n");
+    printf("\n------------------------\n");
+    printf("Carta 2:\n");
     printf("Estado: %c\n", estado2);
     printf("Código: %s\n", codigo2);
     printf("Nome da Cidade: %s\n", nomeCidade2);
@@ -71,6 +78,9 @@ int main() {
     printf("Área: %.2f km²\n", area2);
     printf("PIB: %.2f bilhões de reais\n", pib2);
     printf("Número de Pontos Turísticos: %d\n", pontosTuristicos2);
+    printf("------------------------\n");
+    
+printf("FIM DO PROGRAMA\n");
 
     return 0;
 }
